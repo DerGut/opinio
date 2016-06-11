@@ -1,1 +1,5 @@
 .DS_Store
+
+res/credentials.json
+
+src/__pycache__
