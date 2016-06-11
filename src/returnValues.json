@@ -1,8 +1,12 @@
 {
 	"return_values": {
 		"url":
-			"enriched.url."
+			"enriched.url.url"
 		"keywords":
 			"enriched.url.title"
+		"docSentiment_type":
+			"enriched.url.docSentiment.type"
+		"docSentiment_score":
+			"enriched.url.docSentiment.score"
 	}
 }
