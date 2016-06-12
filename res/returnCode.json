@@ -1,12 +1,14 @@
 {
-	"return_values": {
+	"return_code": {
 		"url":
 			"enriched.url.url",
-		"keywords":
+		"title":
 			"enriched.url.title",
 		"docSentiment_type":
 			"enriched.url.docSentiment.type",
 		"docSentiment_score":
-			"enriched.url.docSentiment.score"
+			"enriched.url.docSentiment.score",
+		"taxonomy":
+			"enriched.url.taxonomy"
 	}
 }
