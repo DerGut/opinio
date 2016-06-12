@@ -92,12 +92,13 @@ class ArticleComparator(object):
 
 	def select_relevant(self, search_data):
 		doc_sentiments = []
-		for article in search_data:
-			doc_sentiments.append(article['source']['enriched']['url']['docSentiment']['type'])
-		doc_sentiments = np.array(doc_sentiments)
-		positive = search_data[np.argmax(doc_sentiments)]
-		negative = search_data[np.argmin(doc_sentiments)]
-		neutral = np.where(doc_sentiments==np.median(doc_sentiments))
+		if len(search_data) > 0:
+			for article in search_data:
+				doc_sentiments.append(article['source']['enriched']['url']['docSentiment']['type'])
+			doc_sentiments = np.array(doc_sentiments)
+			positive = search_data[np.argmax(doc_sentiments)]
+			negative = search_data[np.argmin(doc_sentiments)]
+			neutral = np.where(doc_sentiments==np.median(doc_sentiments))
 
 		return [postive, neutral, negative]
 
@@ -105,17 +106,19 @@ class ArticleComparator(object):
 
 		keywords = ['Donald', 'Trump', 'casino']
 		return_values = ['url', 'title', 'docSentiment_type']
-		
+
+		articles = {}
 		search_result = self.query(keywords, return_values, start='now-20d').json()
 		if search_result['status'] == 'ERROR':
 			# TODO: Try different query!
 			raise self.SearchError(search_result['statusInfo'])
 			# return None
+			return articles
 		else:
 			search_result = search_result['result']['docs']
 			articles = self.select_relevant(self.filter_for_event(search_result))
 			article_features = vectorize_taxonomy(articles)
-		return articles, self.interests
+		return articles#, self.interests
 
 	def vectorize_taxonomy(self, search_data):
 		vecs = []

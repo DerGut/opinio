@@ -1,0 +1,6 @@
+version: '2'
+services:
+  opinio-server:
+    build: .
+    ports:
+      - "5000:5000"
