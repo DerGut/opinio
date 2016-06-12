@@ -25,6 +25,7 @@ class ArticleComparator(object):
 
 		with open('res/testQuery.json') as f:
 			self.testQuery = json.load(f)
+			self.test_idx = 0
 
 		try:
 			f = np.load('res/interests.npy')
@@ -37,18 +38,18 @@ class ArticleComparator(object):
 		try:
 			f = open('res/lastUse.pickle', 'br+')
 			last_use = pickle.load(f)
-			decay = last_use - datetime.datetime.today()
+			decay = last_use - datetime.date.today().toordinal()
 		except FileNotFoundError:
-			last_use = datetime.datetime.today()
+			last_use = datetime.date.today().toordinal()
 			f = open('res/lastUse.pickle', 'wb')
 			pickle.dump(last_use, f)
-			decay = datetime.timedelta()
+			decay = 0
 			f.close()
 		else:
-			pickle.dump(datetime.datetime.today(), f)
+			pickle.dump(0, f)
 			f.close()
 
-		self.interests *= np.exp(-np.power(decay.days + decay.seconds // 3600 / 24, 1/4))
+		self.interests *= np.exp(-np.power(decay, 1/4))
 		
 	
 	class SearchError(Exception):
@@ -123,7 +124,10 @@ class ArticleComparator(object):
 				articles = self.select_relevant(self.filter_for_event(search_result))
 				article_features = vectorize_taxonomy(articles)
 		else:
-			articles = self.testQuery
+			articles = self.testQuery[self.test_idx]
+			self.test_idx += 1
+			self.test_idx % len(self.testQuery)
+
 		return articles#, self.interests
 
 	def vectorize_taxonomy(self, search_data):

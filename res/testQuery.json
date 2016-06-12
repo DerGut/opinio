@@ -1,23 +1,42 @@
 [  
-{
-  "positive": {
-    "url": "http://www.nbcnews.com/politics/2016-election/atlantic-city-strong-opinions-donald-trump-n-j-primary-n586871",
-    "title": "In Atlantic City, Strong Opinions on Donald Trump Before N.J. Primary",
-    "sentiment": "positive",
-    "subtext": "Even though Donald Trump has left Atlantic City, his name still adorns the Trump Taj Mahal and has the power to provoke strong reactions from residents and visitors."
+  {
+    "positive": {
+      "url": "http://www.nbcnews.com/politics/2016-election/atlantic-city-strong-opinions-donald-trump-n-j-primary-n586871",
+      "title": "In Atlantic City, Strong Opinions on Donald Trump Before N.J. Primary",
+      "sentiment": 0.8,
+      "subtext": "Even though Donald Trump has left Atlantic City, his name still adorns the Trump Taj Mahal and has the power to provoke strong reactions from residents and visitors."
+    },
+    "neutral": {
+      "url": "http://www.usatoday.com/story/news/politics/elections/2016/06/01/donald-trump-lawsuits-legal-battles/84995854/",
+      "title": "Trumps 3500 lawsuits unprecedented for a presidential nominee",
+      "sentiment": 0.1,
+      "subtext": "Our project found about 3,500 legal actions involving Trump, including 1,900 where he or his companies were a plaintiff and about 1,300 in which he was the defendant"
+    },
+    "negative": {
+      "url": "http://www.politico.com/magazine/story/2016/05/trump-christie-atlantic-city-213928",
+      "title": "Donald Trump and Chris Christie, the Twin Villains of Atlantic City",
+      "sentiment": -0.6,
+      "subtext": "Residents of the nearly bankrupt boardwalk town gripe about the moguls failed casinos and the governor’s power play."
+    }
   },
-  "neutral": {
-    "url": "http://www.usatoday.com/story/news/politics/elections/2016/06/01/donald-trump-lawsuits-legal-battles/84995854/",
-    "title": "Trumps 3500 lawsuits unprecedented for a presidential nominee",
-    "sentiment": "neutral",
-    "subtext": "Our project found about 3,500 legal actions involving Trump, including 1,900 where he or his companies were a plaintiff and about 1,300 in which he was the defendant"
-  },
-  "negative": {
-    "url": "http://www.politico.com/magazine/story/2016/05/trump-christie-atlantic-city-213928",
-    "title": "Donald Trump and Chris Christie, the Twin Villains of Atlantic City",
-    "sentiment": "negative",
-    "subtext": "Residents of the nearly bankrupt boardwalk town gripe about the moguls failed casinos and the governor’s power play."
+  {
+    "positive": {
+      "url": "http://www.dailystar.co.uk/news/latest-news/512843/England-fans-Euro-2016-threat-Marseille-crime-capital-Europe-Russia-football-violence",
+      "title": "England fans threatened with Euro 2016 bloodbath in France's 'Kalashnikov capital",
+      "sentiment": 0.65,
+      "subtext": "ENGLAND fans were warned they would be the target of knife-wielding drug taking thugs in Europe’s capital of crime – Marseille – long before last night's brawl."
+    },
+    "neutral": {
+      "url": "http://edition.cnn.com/2016/06/11/world/euro-2016-england-russia-brawl/",
+      "title": "Euro 2016: Dozens injured as crowds of rival fans brawl",
+      "sentiment": -0.05,
+      "subtext": "Packs of Russian and English football fans clashed in the French city of Marseille in a third straight day of battles at the Euro 2016 championship."
+    },
+    "negative": {
+      "url": "http://www.presstv.ir/Detail/2016/06/10/469781/France-Marseilles-British-hooligans-locals-brawl",
+      "title": "UK hooligans, locals clash in French city ahead of soccer event",
+      "sentiment": -0.75,
+      "subtext": "Riot police in France have used tear gas to halt clashes between British soccer fans and locals in the French port city of Marseilles ahead of a European soccer event."
+    }
   }
-}
-
 ]
