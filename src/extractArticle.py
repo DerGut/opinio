@@ -23,6 +23,10 @@ class ArticleComparator(object):
 		with open('res/categories.json') as f:
 			self.categories = json.load(f)
 
+		with open('res/testQuery.json') as f:
+			self.test_query = json.load(f)
+			self.test_idx = 0
+
 		try:
 			f = np.load('res/interests.npy')
 			self.interests = f
@@ -34,18 +38,18 @@ class ArticleComparator(object):
 		try:
 			f = open('res/lastUse.pickle', 'br+')
 			last_use = pickle.load(f)
-			decay = last_use - datetime.datetime.today()
+			decay = last_use - datetime.date.today().toordinal()
 		except FileNotFoundError:
-			last_use = datetime.datetime.today()
+			last_use = datetime.date.today().toordinal()
 			f = open('res/lastUse.pickle', 'wb')
 			pickle.dump(last_use, f)
-			decay = datetime.timedelta()
+			decay = 0
 			f.close()
 		else:
-			pickle.dump(datetime.datetime.today(), f)
+			pickle.dump(datetime.date.today().toordinal(), f)
 			f.close()
 
-		self.interests *= np.exp(-np.power(decay.days + decay.seconds // 3600 / 24, 1/4))
+		self.interests *= np.exp(-np.power(decay, 1/4))
 		
 	
 	class SearchError(Exception):
@@ -108,16 +112,21 @@ class ArticleComparator(object):
 		return_values = ['url', 'title', 'docSentiment_type']
 
 		articles = {}
-		search_result = self.query(keywords, return_values, start='now-20d').json()
-		if search_result['status'] == 'ERROR':
-			# TODO: Try different query!
-			raise self.SearchError(search_result['statusInfo'])
-			# return None
-			return articles
+		if self.test_query is None:
+			search_result = self.query(keywords, return_values, start='now-20d').json()
+			if search_result['status'] == 'ERROR':
+				# TODO: Try different query!
+				raise self.SearchError(search_result['statusInfo'])
+				# return None
+				return articles
+			else:
+				search_result = search_result['result']['docs']
+				articles = self.select_relevant(self.filter_for_event(search_result))
+				article_features = vectorize_taxonomy(articles)
 		else:
-			search_result = search_result['result']['docs']
-			articles = self.select_relevant(self.filter_for_event(search_result))
-			article_features = vectorize_taxonomy(articles)
+			articles = self.test_query[self.test_idx]
+			self.test_idx += 1
+			self.test_idx % len(self.test_query)
 		return articles#, self.interests
 
 	def vectorize_taxonomy(self, search_data):
