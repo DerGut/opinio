@@ -19,14 +19,11 @@ class RandomSuggestions(object):
         pass
 
     def getSuggestionKeywords(nr_of_suggestions = 3):
-        # high_ranks = requests.get('https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=611b3d89ee443a89c455bfa5812b48772fa83f6e&rank=high&start=now-1d&end=now&return=' + ','.join(return_values) + '&outputMode=json')
+        high_ranks = requests.get('https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=611b3d89ee443a89c455bfa5812b48772fa83f6e&rank=high&start=now-1d&end=now&return=' + ','.join(return_values) + '&outputMode=json')
 
-        # # get all the keywords in the high ranks
-        # for result in high_ranks[0]['result']['docs']:
-        #     keywords.append(result['source']['enriched']['url']['keywords'])
-
-        #for testing purposes
-        keywords = [[1,3,3,3,3],[2,2,2,2,2,],[3,3,3,3,3,3],[4,4,4,4,4,4],[5,5],[6]]
+        # get all the keywords in the high ranks
+        for result in high_ranks[0]['result']['docs']:
+            keywords.append(result['source']['enriched']['url']['keywords'])
 
         #randomly select keywords
         random_integers = [np.random.randint(len(keywords)-(1*i)) for i in range(1,nr_of_suggestions+1)]
@@ -36,8 +33,8 @@ class RandomSuggestions(object):
             suggestions.append(keywords[rn][:3])
             keywords.remove(keywords[rn])
 
-        return suggestions
 
+        return suggestions
 
 
 # print(getSuggestionKeywords())
