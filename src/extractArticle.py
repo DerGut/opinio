@@ -52,7 +52,7 @@ class ArticleComparator(object):
 		"""Raised when no search result could be queried."""
 		pass	
 
-	def query(self, keywords, return_values, outputMode='json', start='now-30d', end='now', count='100'):
+	def query(self, keywords, return_values, outputMode='json', start='now-3d', end='now', count='1000'):
 		"""
 		Generates the url to query the data base and extracts the data from it.
 
