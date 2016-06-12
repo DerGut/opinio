@@ -23,6 +23,9 @@ class ArticleComparator(object):
 		with open('res/categories.json') as f:
 			self.categories = json.load(f)
 
+		with open('res/testQuery.json') as f:
+			self.testQuery = json.load(f)
+
 		try:
 			f = np.load('res/interests.npy')
 			self.interests = f
@@ -108,16 +111,19 @@ class ArticleComparator(object):
 		return_values = ['url', 'title', 'docSentiment_type']
 
 		articles = {}
-		search_result = self.query(keywords, return_values, start='now-20d').json()
-		if search_result['status'] == 'ERROR':
-			# TODO: Try different query!
-			raise self.SearchError(search_result['statusInfo'])
-			# return None
-			return articles
+		if self.testQuery is None:
+			search_result = self.query(keywords, return_values, start='now-20d').json()
+			if search_result['status'] == 'ERROR':
+				# TODO: Try different query!
+				raise self.SearchError(search_result['statusInfo'])
+				# return None
+				return articles
+			else:
+				search_result = search_result['result']['docs']
+				articles = self.select_relevant(self.filter_for_event(search_result))
+				article_features = vectorize_taxonomy(articles)
 		else:
-			search_result = search_result['result']['docs']
-			articles = self.select_relevant(self.filter_for_event(search_result))
-			article_features = vectorize_taxonomy(articles)
+			articles = self.testQuery
 		return articles#, self.interests
 
 	def vectorize_taxonomy(self, search_data):
