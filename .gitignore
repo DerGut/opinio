@@ -3,3 +3,4 @@
 res/credentials.json
 
 src/__pycache__
+src/*.pyc
