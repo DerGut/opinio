@@ -7,6 +7,8 @@
 		"docSentiment_type":
 			"enriched.url.docSentiment.type",
 		"docSentiment_score":
-			"enriched.url.docSentiment.score"
+			"enriched.url.docSentiment.score",
+		"taxonomy":
+			"enriched.url.taxonomy"
 	}
 }
