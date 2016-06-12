@@ -8,6 +8,8 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 RUN pip install flask-restful
+RUN pip install requests
+RUN pip install simplejson
 
 ENTRYPOINT ["python"]
 CMD ["app.py"]
