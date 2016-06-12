@@ -8,22 +8,28 @@ api = Api(app)
 
 articles = {}
 comparator = ArticleComparator()
-articles = comparator.generate_search_results('foo')
 
-print(articles)
+try :
+	articles = comparator.generate_search_results('foo')
+	articles['error'] = '0'
+except :
+	print 'Daily limit of requests reached for current API key'
+	articles['error'] = '1'
 
-class HelloWorld(Resource):
+print articles
+
+class Articles(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return articles
 
-api.add_resource(HelloWorld, '/world')
+api.add_resource(Articles, '/articles')
 
 
-class TodoSimple(Resource):
-	def get(self, aid):
-		return {aid: articles[aid]}
+class Article(Resource):
+	def get(self, article_id):
+		return {article_id: articles[article_id]}
 
-api.add_resource(TodoSimple, '/<string:todo_id>')
+api.add_resource(Article, '/<string:article_id>')
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
