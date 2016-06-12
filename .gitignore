@@ -1,6 +1,8 @@
 .DS_Store
 
 res/credentials.json
+res/interests.npy
+res/lastUse.pickle
 
 src/__pycache__
 src/*.pyc
