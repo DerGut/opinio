@@ -1,0 +1,17 @@
+{ "results":
+  {"url": "http://www.dailystar.co.uk/news/latest-news/512843/England-fans-Euro-2016-threat-Marseille-crime-capital-Europe-Russia-football-violence",
+   "title": "England fans threatened with Euro 2016 bloodbath in France's 'Kalashnikov capital",
+   "sentiment": "positive",
+   "subtext": "ENGLAND fans were warned they would be the target of knife-wielding drug taking thugs in Europe’s capital of crime – Marseille – long before last night's brawl."
+ },
+  {"url": "http://edition.cnn.com/2016/06/11/world/euro-2016-england-russia-brawl/",
+   "title": "Euro 2016: Dozens injured as crowds of rival fans brawl",
+   "sentiment": "neutral",
+   "subtext": "Packs of Russian and English football fans clashed in the French city of Marseille in a third straight day of battles at the Euro 2016 championship."
+ },
+  {"url": "http://www.presstv.ir/Detail/2016/06/10/469781/France-Marseilles-British-hooligans-locals-brawl",
+   "title": "UK hooligans, locals clash in French city ahead of soccer event",
+   "sentiment": "negative",
+   "subtext": "Riot police in France have used tear gas to halt clashes between British soccer fans and locals in the French port city of Marseilles ahead of a European soccer event."
+ }
+}
