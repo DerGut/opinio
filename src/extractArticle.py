@@ -74,7 +74,7 @@ class ArticleComparator(object):
 
 	def generate_search_results(self, category):
 		keywords = ['Donald', 'Trump', 'casino']
-		return_values = ['url', 'title', 'docSentiment_Type']
+		return_values = ['url', 'title', 'docSentiment_type']
 	
 		search_result = self.query(keywords, return_values, start='now-20d').json()
 		if search_result['status'] == 'ERROR':
