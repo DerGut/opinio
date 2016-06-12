@@ -32,7 +32,7 @@ class ArticleComparator(object):
 				np.save(f, self.interests)
 
 		try:
-			f = open('res/lastUse.pickle', 'rb')
+			f = open('res/lastUse.pickle', 'br+')
 			last_use = pickle.load(f)
 			decay = last_use - datetime.datetime.today()
 		except FileNotFoundError:
