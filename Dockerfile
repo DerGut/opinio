@@ -7,6 +7,7 @@ RUN apt-get install -y python3.5 python3.5-dev python-distribute python-pip pyth
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
+RUN pip install flask-restful
 
 ENTRYPOINT ["python"]
 CMD ["app.py"]
